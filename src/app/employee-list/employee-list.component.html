@@ -1,0 +1,29 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Employee ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Designation</th>
+            <th scope="col">Credits</th>
+            <th scope="col">Eligible for Promotion</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr *ngFor="let e of employeeList">
+            <td>{{e.id}}</td>
+            <td>{{e.name}}</td>
+            <td>{{e.salary | currency: 'USD'}}</td>
+            <td>{{e.designation}}</td>
+            <td>{{e.credits}}</td>
+            <td>
+                <div *ngIf="e.salary>9000 && e.credits>5; else elseBlock">
+                    yes
+                </div>
+                <ng-template #elseBlock>no</ng-template>
+            </td>   
+        </tr>
+    </tbody>
+    
+</table>
